@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Types & typeof Checker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f4f8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
+    input, select, button {
+      padding: 0.5rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+    }
+    .output {
+      margin-top: 1rem;
+      background: white;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>JavaScript typeof Checker</h1>
+  <p>Enter a value and check its JavaScript type.</p>
+
+  <input type="text" id="inputValue" placeholder="Enter value e.g. 123, 'hello'">
+  <button onclick="checkType()">Check Type</button>
+
+  <div class="output" id="result"></div>
+
+  <script>
+    function checkType() {
+      const input = document.getElementById('inputValue').value;
+      let value;
+      try {
+        // Try to evaluate the input (e.g. "123", "true", "null")
+        value = eval(input);
+      } catch (e) {
+        value = input; // If eval fails, treat as string
+      }
+      const type = typeof value;
+
+      document.getElementById('result').innerHTML = `
+        <strong>Input:</strong> ${input} <br>
+        <strong>Evaluated Value:</strong> ${value} <br>
+        <strong>Type:</strong> <code>${type}</code>
+      `;
+    }
+  </script>
+</body>
+</html>
